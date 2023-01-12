@@ -29,10 +29,11 @@ if __name__ == "__main__":
    rssFeedUrl = args["rss"]
    skiptime = args["skiptime"]
 
+   logging.debug("Starting reading YouTube feed...")
    NewsFeed = feedparser.parse(rssFeedUrl)
    if longVideo:
       for e in NewsFeed.entries:
-         logging.debug("Title: " + e.title)
+         logging.debug("Video title: " + e.title)
          try:
             video = pafy.new(e.link)
          except Exception as e:
@@ -52,9 +53,10 @@ if __name__ == "__main__":
    else:
       entry = NewsFeed.entries[0]
 
+   logging.debug("Ending reading YouTube feed")
+
    if 'entry' in locals():
-      logging.debug("Title: " + e.title)
-      logging.debug("Published: " + entry.published)
+      logging.debug("Opening the video " + e.title + " published at " + entry.published)
 
       os.system("termux-open-url \"" + entry.link + "&t=" + str(skiptime) + "\"")
    else:
