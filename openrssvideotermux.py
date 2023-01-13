@@ -47,7 +47,7 @@ if __name__ == "__main__":
          logging.debug("Video minute: " + str(video_minute))
          logging.debug("----------------------------")
 
-         if ((videoHour > 0 and video_hour >= videoHour) or (videoMinute > 0 and video_minute >= videoMinute)):
+         if (min(videoHour, videoMinute) == 0 and ((videoHour > 0 and video_hour >= videoHour) or (videoMinute > 0 and video_minute >= videoMinute))) or (min(videoHour, videoMinute) > 0 and (video_hour >= videoHour and video_minute >= videoMinute)):
             entry = e
             break
    else:
