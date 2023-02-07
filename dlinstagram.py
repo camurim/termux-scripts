@@ -52,7 +52,7 @@ loader = instaloader.Instaloader(
 if userName and password:
 	loader.login(userName, password)
 
-expr = r'\/p\/([^\/]*)/'
+expr = r'\/reel|p\/([^\/]*)/'
 found = re.search(expr, url)
 
 if found:
