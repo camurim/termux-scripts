@@ -7,7 +7,6 @@ import argparse
 import feedparser
 import pafy
 import traceback
-import argparse
 
 logging.basicConfig(level=logging.DEBUG)
 
