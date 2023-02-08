@@ -37,12 +37,14 @@ loginConfig = config['LOGIN_INSTAGRAM']
 userName = loginConfig['userName']
 password = loginConfig['password']
 
+# Download Média
 exprInstagram = r'\/(?:reel|p)\/([^\/]*)/'
-exprYouTube = r'\/watch\?=*'
+exprYouTube = r'^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$'
 
 foundInstagram = re.search(exprInstagram, url)
 foundYouTube = re.search(exprYouTube, url)
 
+# Instagram or YouTube
 if foundInstagram:
     loader = instaloader.Instaloader(
         download_pictures=True,
@@ -58,9 +60,8 @@ if foundInstagram:
     if userName and password:
         loader.login(userName, password)
 
-	print("Baixando ", foundInstagram.group(1), "...")
-	post = instaloader.Post.from_shortcode(loader.context, foundInstagram.group(1))
-	loader.download_post(post, ".")
+    post = instaloader.Post.from_shortcode(loader.context, foundInstagram.group(1))
+    loader.download_post(post, ".")
 elif foundYouTube:
     ydl_opts = {
                 'nocheckcertificate': True,
