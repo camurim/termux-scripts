@@ -56,7 +56,7 @@ if __name__ == "__main__":
    logging.debug("Ending reading YouTube feed")
 
    if 'entry' in locals():
-      logging.debug("Opening the video " + e.title + " published at " + entry.published)
+      logging.debug("Opening the video " + entry.title + " published at " + entry.published)
 
       os.system("termux-open-url \"" + entry.link + "&t=" + str(skiptime) + "\"")
    else:
