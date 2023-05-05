@@ -9,8 +9,6 @@ import feedparser
 import traceback
 import json
 import urllib.request
-
-# import urlparse
 import urllib.parse as urlparse
 
 logging.basicConfig(level=logging.DEBUG)
@@ -33,7 +31,7 @@ def get_video_id(value):
 
 def main():
     if "YT_API_KEY" not in os.environ:
-        logging.debug("the enviroment variable YT_API_KEY has not been defined!")
+        logging.error("the enviroment variable YT_API_KEY has not been defined!")
         exit(1)
 
     YT_API_KEY = os.environ["YT_API_KEY"]
